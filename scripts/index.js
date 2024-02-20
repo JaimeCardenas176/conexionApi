@@ -50,7 +50,9 @@ function crearCabeceraArticuloDOM(articulo){
 
 function crearDescripcionArticuloDOM(articulo){
     //montamos eelemento y devolvemos
-    return document.createElement("p")
+    const p = document.createElement("p")
+    p.innerHTML=articulo.description
+    return p
 }
 
 function crearPieArticuloDOM(articulo){
