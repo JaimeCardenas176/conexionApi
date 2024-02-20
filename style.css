@@ -1,0 +1,62 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body, .contenedorPadreDeTodo{
+    min-height: 100vh; 
+    min-width: 100vw;
+    overflow-y: auto;
+}
+
+
+.fila{
+    padding: 10px;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    
+
+    background-color: burlywood;
+
+    width: 98%;
+    height: auto;
+}
+.cardArticulo{
+    margin: 10px;
+    display: flex;
+    flex-direction: column;
+    
+    background: blanchedalmond;
+    height: 500px;
+    width: 300px;
+}
+.cardArticulo > * {
+    padding: 10px;
+}
+.cardArticulo-img{
+    padding: 0;
+    width: auto;
+    height: 75%;
+}
+
+.cardArticulo-cabecera{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
+.cardArticulo-cabecera > span {
+    font-size: 1.5em;
+}
+.cardArticulo-pie{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+
+
