@@ -3,13 +3,12 @@
 //una lista pa rellenarla con los articulos de ropa
 let listaRopa = [];
 
-//el elemento del DOM HTML donde queremos meter esos articulos
-const elementoContendorDOM = document.getElementsByClassName('fila');
+
 
 function crearArticuloEnDOM(articulo){
 
     //el padree de todo la card donde vamos a pintar el articulo
-    const divArticuloEntero = document.createElement("div", {class: "cardArticulo"})
+    const divArticuloEntero = document.createElement("div")
     
     const foto = crearImagenArticuloDOM(articulo)
     const cabecera = crearCabeceraArticuloDOM(articulo)
@@ -27,26 +26,31 @@ function crearArticuloEnDOM(articulo){
 
 }
 
-
 function crearImagenArticuloDOM(articulo) {
     //montamos elemento y devolvemos 
-    return document.createElement("img", {src: articulo.image, class: "cardArticulo-img"})
+    let img = document.createElement("img")
+    img.className ="cardArticulo-img"
+    img.src=articulo.image
+    return img;
 }
 
 function crearCabeceraArticuloDOM(articulo){
 
     //creamos los elementos del dom (siempre es igual)
-    const divPadre = document.createElement("div", {class: "cardArticulo-cabecera"})
-    const span1 = document.createElement("h2").innerHTML = articulo.title
-    const span2 = document.createElement("span").innerHTML = articulo.price
+    const divPadre = document.createElement("div")
+
+    const h2 = document.createElement("h2")
+    h2.innerHTML = articulo.title
+    const span2 = document.createElement("span")
+    span2.innerHTML = articulo.price
     
     //esta linea añade los elementos span dentro del div padre
-    divPadre.append(span1,span2)
-
+    divPadre.append(h2,span2)
+    divPadre.className="cardArticulo-cabecera"
     //y devolveemos eel Elemento HTML ya montado
     return divPadre
 
-}7
+}
 
 function crearDescripcionArticuloDOM(articulo){
     //montamos eelemento y devolvemos
@@ -59,12 +63,15 @@ function crearPieArticuloDOM(articulo){
 
     //creamos los elementos del dom (siempre es igual)
     const divPadre = document.createElement("div", {class: "cardArticulo-pie"})
-    const span1 = document.createElement("span").innerHTML = articulo.rating.rate
-    const span2 = document.createElement("span").innerHTML = articulo.rating.count
+    const span1 = document.createElement("span")
+    span1.innerHTML = articulo.rating.rate
+
+    const span2 = document.createElement("span")
+    span2.innerHTML = articulo.rating.count
     
     //esta linea añade los elementos span dentro del div padre
     divPadre.append(span1,span2)
-
+    divPadre.className="cardArticulo-pie"
     //y devolveemos eel Elemento HTML ya montado
     return divPadre
 
@@ -94,18 +101,21 @@ fetch('https://fakestoreapi.com/products')//pedimos los productos
             listaRopa=loQueLlegue;
 
             //por si la quieres ver pero muchos texto
-            console.log(otraListaRopa)
-
+            console.log(listaRopa)
+            //el elemento del DOM HTML donde queremos meter esos articulos
+            const elementoContendorDOM = document.getElementsByClassName('fila')[0];
             //la lista es una lista, asi que hacemos un for que pa eso estan las listas
             for (let i = 0; i < listaRopa.length; i++) {
                 
                 //cogemos y por cada articulo creamos el Articulo DOM
                 const divArticulo = crearArticuloEnDOM(listaRopa[i])
+                divArticulo.className="cardArticulo"
+                console.log(divArticulo);
                 //y ahora que ya hemos creado la card de articulo (un div que lo tieene todo dentro)
                 //lo metemos dondee queriamos
                 
                     //IMPORTANTE, ANTES DE DESCOMENTAR LA SIGUIENTE LINEA BORRA EL CONTENIDO DE DIV CON LA class="fila"
-                //elementoContendorDOM.appendChild(divArticulo)
+                elementoContendorDOM.appendChild(divArticulo)
             }
         })
 
